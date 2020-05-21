@@ -1,0 +1,1227 @@
+<?php
+$filename='counter.txt';
+$ip_filename='ip.txt';
+
+function inc_count()
+{
+	$ip=$_SERVER['REMOTE_ADDR'];
+
+	global $filename,$ip_filename;
+
+	if (!in_array($ip, file($ip_filename,FILE_IGNORE_NEW_LINES))) {
+		# code...
+
+	$current_value=(file_exists($filename))? file_get_contents($filename):0;
+
+	file_put_contents($ip_filename,$ip."\n",FILE_APPEND);
+	file_put_contents($filename, ++$current_value);
+
+	}
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>MahaWiki: Community of Geeks</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="MahaWiki: Community of Geeks, Mahawiki Tech Group for learners" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<!-- pop-up-box -->
+<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //pop-up-box -->
+<!-- font-awesome icons -->
+<link href="css/font-awesome.css" rel="stylesheet">
+
+<!-- //font-awesome icons -->
+<link href="//fonts.googleapis.com/css?family=Prata" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300, 400,700|Inconsolata:400,700" rel="stylesheet"/>
+<link rel="stylesheet" href="css/aos.css">
+<link rel="icon" href="images/mahawiki.ico">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+</head>
+
+<style type="text/css">
+	.btn-header{
+		color: #fff;
+	    text-transform: uppercase;
+	    font-size: 1em;
+	    border: none;
+	    background: #ba1c92;
+	    margin: 10px;
+	    border-radius: 0px;
+	}
+.btn-primary:active,.btn-primary:focus, .btn-header:hover{
+    background: #6f0a81 !important;
+    color: #FFFFFF !important;
+	}	 
+</style>
+<body>
+<!-- header -->
+	<div  id="home"  class="header-w3ls-agileinfo">
+			<div class="container">
+        <div class="w3layouts_agileits_nav_section">
+
+				<nav class="navbar navbar-default">
+          <span>
+            <a href="index.html">
+              <img src="./images/logo.png" style="width: 215px; padding: 6px; height: 65px;"/>
+            </a>
+          </span>
+					<div class="navbar-header navbar-left">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+						<nav>
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="#home">Home</a></li>
+								<li><a href="#about" class="hvr-rectangle-out scroll">About</a></li>
+								<li><a href="#team" class="hvr-rectangle-out scroll">Team</a></li>
+								<li><a href="#news" class="hvr-rectangle-out scroll">Blogs</a></li>
+								<!-- <li><a href="#gallery" class="hvr-rectangle-out scroll">Gallery</a></li> -->
+								<li><a href="#contact" class="hvr-rectangle-out scroll">Contact</a></li>
+							</ul>
+						</nav>
+					</div>
+				</nav> <p class="">
+			</div>
+		</div>
+  </div>
+
+<!-- //header -->
+    <!-- Modal1 -->
+   <!--  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+      <div class="modal-dialog"> -->
+      <!-- Modal content-->
+      <!--   <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="signin-form profile">
+            <h3 class="agileinfo_sign">Sign In</h3>
+                <div class="login-form">
+                  <form action="#" method="post">
+                    <input type="text" name="email" placeholder="E-mail" required="">
+                    <input type="password" name="password" placeholder="Password" required="">
+                    <div class="tp">
+                      <input type="submit" value="Sign In">
+                    </div>
+                  </form>
+                </div>
+                <div class="login-social-grids">
+                  <ul>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                  </ul>
+                </div>
+                <p><a href="#" data-toggle="modal" data-target="#myModal3" > Don't have an account?</a></p>
+              </div>
+          </div>
+        </div> -->
+   <!--    </div>
+    </div> -->
+    <!-- //Modal1 -->
+    <!-- Modal2 -->
+   <!--  <div class="modal fade" id="myModal3" tabindex="-1" role="dialog">
+      <div class="modal-dialog"> -->
+      <!-- Modal content-->
+        <!-- <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="signin-form profile">
+            <h3 class="agileinfo_sign">Sign Up</h3>
+                <div class="login-form">
+                  <form action="#" method="post">
+                      <input type="text" name="name" placeholder="Username" required="">
+                    <input type="email" name="email" placeholder="Email" required="">
+                    <input type="password" name="password" placeholder="Password" required="">
+                    <input type="password" name="password" placeholder="Confirm Password" required="">
+                    <input type="submit" value="Sign Up">
+                  </form>
+                </div>
+                <p><a href="#"> By clicking register, I agree to your terms</a></p>
+              </div>
+          </div> -->
+        <!-- </div>
+      </div>
+    </div> -->
+    <!-- //Modal2 -->
+    <!-- Modal4 -->
+   <!--  <div class="modal fade" id="myModal4" tabindex="-1" role="dialog">
+      <div class="modal-dialog"> -->
+      <!-- Modal content-->
+        <!-- <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="signin-form profile">
+            <h3 class="agileinfo_sign">Admission Form</h3>
+                <div class="login-form">
+                  <form action="#" method="post">
+                      <input type="text" name="name" placeholder="Name of the Candidate" required="">
+                      <input type="text" name="gender" placeholder="Gender" required="">
+                      <input type="text" name="city" placeholder="City" required="">
+                      <input type="text" name="phone" placeholder="Phone No" required="">
+                      <input type="email" name="email" placeholder="Email" required="">
+                    <div class="address">
+                      <select class="form-control">
+                        <option>Select Courses</option>
+                        <option>Course 1</option>
+                        <option>Course 2</option>
+                        <option>Course 3</option>
+                        <option>Course 4</option>
+                        <option>Course 5</option>
+                        <option>More</option>
+                      </select>
+                      <select class="form-control two">
+                        <option>Select Campus</option>
+                        <option>Campus 1</option>
+                        <option>Campus 2</option>
+                        <option>Campus 3</option>
+                        <option>Campus 4</option>
+                        <option>Campus 5</option>
+                        <option>More</option>
+                      </select>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="address">
+                      <textarea name="Message" placeholder="Address" required=" "></textarea>
+                      <textarea name="Message" placeholder="Additional Note" required=" "></textarea>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="address">
+                      <input type="submit" value="Admission Now">
+                      <input type="reset" value="Clear">
+                      <div class="clearfix"></div>
+                    </div>
+                  </form>
+                </div>
+                <p><a href="#"> By clicking Admission, I agree to your terms</a></p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- //Modal4 -->
+<!-- banner -->
+	<div class="w3ls_banner_section">
+		<div class="container">
+      <img src="./images/home.png" class="imgresize navimgresponsive img-fluid " height="200" width="200">
+			<h2><b>Educate <span>Encourage</span>  Enhance </b> </h2>
+			<p>A Community For All </p>
+
+			<button class="btn btn-primary btn-lg btn-header">Join Mahawiki </button>
+			 <!-- <div class="wthree-counter-agile">s
+					<section class="examples">
+            <div class="simply-countdown-losange" id="simply-countdown-losange"></div>
+            <div class="clearfix"></div>
+					</section>
+			 </div> -->
+
+			<div class="agileits_more">
+				<!-- <ul>
+					<li><a href="#" data-toggle="modal" data-target="#myModal4" class="w3ls_banner_more hvr-icon-hang scroll ">Admission</a></li>
+					<li><a href="#" class="hvr-icon-hang" data-toggle="modal" data-target="#myModal">Read More</a></li>
+				</ul> -->
+			</div>
+		</div>
+	</div>
+<!-- //banner -->
+<!-- bootstrap-pop-up -->
+	<!-- <div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+				<section>
+					<div class="modal-body">
+					       <h3 class="agileinfo_sign">Brilliance</h3>
+						<img src="images/ab.jpg" alt=" " class="img-responsive" />
+						<p>Ut enim ad minima veniam, quis nostrum
+							exercitationem ullam corporis suscipit laboriosam,
+							nisi ut aliquid ex ea commodi consequatur.
+							<i>" Quis autem vel eum iure reprehenderit qui in ea voluptate velit .</i></p>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div> -->
+<!-- //bootstrap-pop-up -->
+
+<!-- banner-down-->
+			<div class="wthree_banner_grids">
+			<div class="container">
+				<div class="col-md-3 col-sm-12 col-xs-12 wthree_banner_grid aos-item" data-aos="zoom-in">
+					<i class="fa fa-users" aria-hidden="true"></i>
+					<h4>Place For Mentors And Mentee</h4>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="col-md-3 col-sm-12 col-xs-12 wthree_banner_grid aos-item" data-aos="zoom-in">
+					<i class="fa fa-slideshare" aria-hidden="true"></i>
+					<h4>Meet And Greet Geeks </h4>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="col-md-3 col-sm-12 col-xs-12 wthree_banner_grid  aos-item" data-aos="zoom-in">
+				<i class="fa fa-wechat " aria-hidden="true"></i>
+					<h4>Tech Talks, Discussion and Fun</h4>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="col-md-3 col-sm-12 col-xs-12 wthree_banner_grid  aos-item" data-aos="zoom-in">
+					<i class="fa fa-bar-chart " aria-hidden="true"></i>
+					<h4>Learn And Grow Together</h4>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+				</div>
+			</div>
+
+<!-- //banner-down-->
+<!-- banner-bottom -->
+
+<div class="container" id="about">
+	<div class=" border border-warning col-md-6 col-sm-12" data-aos="zoom-in">
+		<blockquote style="background: #fff" class="blockquote text-center vision-mission-div">
+			<img src="images/puzzle.png" style="width: 30%" alt="MISSION">
+			      <span class="vision-mission-header"><b>MISSION</b></span>
+			            <p class="lead vision-mission-text">
+			            	To build a community based technical learning platfrom which is available, accessible and affordable to all.
+
+			            </p>
+		</blockquote>
+				
+	</div>
+
+	<div class="col-md-6 col-sm-12">
+		<blockquote style="background: #fff" class="blockquote text-center vision-mission-div" data-aos="zoom-in">
+			<img src="images/idea.png" style="width: 30%" alt="Vision">
+	      <span class="vision-mission-header"><b>VISION</b></span>
+	        	<p class="lead vision-mission-text">To build a healthy tech community for students and professionals to share their knowledge, experience and experties.
+	            </p>
+		</blockquote>
+				
+	</div>
+ </div>  
+	<div class="banner-bottom-agileits">
+
+			<div class="col-md-5 w3l_banner_bottom_right" data-aos="zoom-in">
+				<img src="./images/header.png" alt=" " class="img-responsive" />
+			</div>
+			<div class="col-md-7 w3l_banner_bottom_left" data-aos="zoom-in">
+				<!-- <h3>Complete Solution For You Education Needs</h3> -->
+				<blockquote class="blockquote text-center">
+						All of us do not have equal talent. But, all of us have an equal opportunity to develop our talents.<br> Dr. APJ Abdul Kalam Sir.
+				</blockquote>
+				<p class="text-justify"><strong>
+				MahaWiki is one of the emerging tech community. A community which belive in sharing of knowledge. Over few years MahaWiki have created an impression by conducting training, webinars, workshops and meetups for tech aspiring students and geeks in the city. We thrive to encourage students and prepare them eligible for various job profiles proposed by industries. We intend to take effective measures to enhance the technical skills among students/ professionals and lead them towards finding an appropriate career in their respective domain.</strong>
+					<!-- MahaWiki is a open community for all the geeks, nerds and techies. MahaWiki is one of the emerging tech community. A community which believe in sharing of knowledge, Supporting and Helping beginners . Over few years MahaWiki have created an impression by conducting training, webinars, workshops and meetups for tech aspiring students/Learners and geeks in the city. We thrive to educate, encourage and enhancement of personal and professional skills. -->
+
+					<!-- If you join our community you will be part of a community base learning system and we share 
+					1) News and Blogs Updates (Email)
+					2) Daily Tech Talks, Which help in your skills and knowledge improvement  
+					3)A place to ask question(In community you can ask share your doubts)
+					3) Webinar alerts (Webinar conducted by Experts)
+					4) Free of cost community support for projects
+					5) Opportunity to highlight your skills and knowledges
+					6) Get Help in Paper publishing, research work from like minded -->
+
+			</div>
+			<div class="clearfix"></div>
+	</div>
+
+
+   
+<!-- //banner-bottom -->
+	<!-- services -->
+	<div class="services" id="services">
+		<div class="container">
+		<div class="w3ls-heading">
+				<h3 class="h-two">MahaWiki A Community For All</h3>
+			</div>
+			<div class="w3layouts-grids">
+				<div class="services-right-grids">
+					<div class="col-sm-4 services-right-grid aos-item" data-aos="flip-right">
+						<div class="services-icon hvr-radial-in">
+							<i class="fa fa-bar-chart" aria-hidden="true"></i>
+						</div>
+						<div class="services-icon-info">
+							<h5>Skills</h5>
+							<p>To build interpersonal, technical and problem-solving skills by collaborating with the community.</p>
+						</div>
+					</div>
+					<div class="col-sm-4 services-right-grid aos-item" data-aos="flip-right">
+						<div class="services-icon hvr-radial-in">
+							<i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+						</div>
+						<div class="services-icon-info">
+							<h5>Self Learning</h5>
+							<p>Self-paced learning programme for everyone where an individual can up skill himself according to choice and relevancy.</p>
+						</div>
+					</div>
+					<div class="col-sm-4 services-right-grid aos-item" data-aos="flip-right">
+						<div class="services-icon hvr-radial-in">
+						<i class="fa fa-question-circle-o" aria-hidden="true"></i>
+						</div>
+						<div class="services-icon-info">
+							<h5>Knowledge</h5>
+							<p>Gain knowledge, discover new ideas and implement them under guidance of experts and get community support.</p>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="services-right-grids">
+					<div class="col-sm-4 services-right-grid aos-item" data-aos="flip-right">
+						<div class="services-icon hvr-radial-in">
+						<i class="fa fa-comments" aria-hidden="true"></i>
+						</div>
+						<div class="services-icon-info">
+							<h5>Discussion</h5>
+							<p>Community driven platform to collaborate on multiple ideas, help each other to solve queries and share knowledge.</p>
+						</div>
+					</div>
+					<div class="col-sm-4 services-right-grid aos-item" data-aos="flip-right">
+						<div class="services-icon hvr-radial-in">
+							<i class="fa fa-usd" aria-hidden="true"></i>
+						</div>
+						<div class="services-icon-info">
+							<h5>Not for Profit  </h5>
+							<p>Cost free and non-profit community established for a global purpose of creating one for all knowledge hub.</p>
+						</div>
+					</div>
+					<div class="col-sm-4 services-right-grid aos-item" data-aos="flip-right">
+						<div class="services-icon hvr-radial-in">
+							<i class="fa fa-building-o" aria-hidden="true"></i>
+						</div>
+						<div class="services-icon-info">
+							<h5>Geeks Under One Roof</h5>
+							<p>Read and share technical blogs, research papers and explore our more opportunity with community of geeks.</p>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //services -->
+
+<!-- team -->
+	<div class="team" id="team">
+		<div class="container">
+			<div class="w3ls-heading">
+				<h3>Our Team</h3>
+				<p class="sub">Together we learn, share and grow.</p>
+			</div>
+			<div class="row w3layouts-grids">
+				<div class="col-md-3 col-sm-12 col-xs-12 wthree_team_grid" data-aos="flip-left">
+					<div class="wthree_team_grid1">
+						<div class="hover14 column">
+							<div>
+								<figure><img src="images/1.jpg" alt=" " class="img-responsive" /></figure>
+							</div>
+						</div>
+						<div class="wthree_team_grid1_pos">
+							<h4>Sachin Thete</h4>
+						</div>
+					</div>
+					<div class="wthree_team_grid2">
+						<ul class="social-icons">
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa  fa-github"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-12 col-xs-12 wthree_team_grid" data-aos="flip-left">
+					<div class="wthree_team_grid1">
+						<div class="hover14 column">
+							<div>
+								<figure><img src="images/3.jpg" alt=" " class="img-responsive" /></figure>
+							</div>
+						</div>
+						<div class="wthree_team_grid1_pos">
+							<h4>Sonali Dhurjad</h4>
+						</div>
+					</div>
+					<div class="wthree_team_grid2">
+						<ul class="social-icons">
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa  fa-github"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="col-md-3  col-sm-12 col-xs-12 wthree_team_grid" data-aos="flip-left">
+					<div class="wthree_team_grid1">
+						<div class="hover14 column">
+							<div>
+								<figure><img src="images/2.jpg" alt=" " class="img-responsive" /></figure>
+							</div>
+						</div>
+						<div class="wthree_team_grid1_pos">
+							<h4>K.Krishna Chaitanya Rao</h4>
+						</div>
+					</div>
+					<div class="wthree_team_grid2">
+						<ul class="social-icons">
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa  fa-github"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3  col-sm-12 col-xs-12 wthree_team_grid" data-aos="flip-left">
+					<div class="wthree_team_grid1">
+						<div class="hover14 column">
+							<div>
+								<figure><img src="images/The-Dev-Ankit.png" alt=" " class="img-responsive" /></figure>
+							</div>
+						</div>
+						<div class="wthree_team_grid1_pos">
+							<h4>Ankitkumar Singh</h4>
+						</div>
+					</div>
+					<div class="wthree_team_grid2">
+						<ul class="social-icons">
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa  fa-github"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="row w3layouts-grids">
+				<div class="col-md-3  col-sm-12 col-xs-12 wthree_team_grid" data-aos="flip-left">
+					<div class="wthree_team_grid1">
+						<div class="hover14 column">
+							<div>
+								<figure><img src="images/5.jpeg" alt=" " class="img-responsive" /></figure>
+							</div>
+						</div>
+						<div class="wthree_team_grid1_pos">
+							<h4>Abdultaiyeb Chechatwala</h4>
+						</div>
+					</div>
+					<div class="wthree_team_grid2">
+						<ul class="social-icons">
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa  fa-github"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3  col-sm-12 col-xs-12 wthree_team_grid" data-aos="flip-left">
+					<div class="wthree_team_grid1">
+						<div class="hover14 column">
+							<div>
+								<figure><img src="images/4.jpg" alt=" " class="img-responsive" /></figure>
+							</div>
+						</div>
+						<div class="wthree_team_grid1_pos">
+							<h4>Shivani Mehta</h4>
+						</div>
+					</div>
+					<div class="wthree_team_grid2">
+						<ul class="social-icons">
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa  fa-github"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3  col-sm-12 col-xs-12 wthree_team_grid" data-aos="flip-left">
+					<div class="wthree_team_grid1">
+						<div class="hover14 column">
+							<div>
+								<figure><img src="images/AnkitTiwari.jpeg" alt=" " class="img-responsive" /></figure>
+							</div>
+						</div>
+						<div class="wthree_team_grid1_pos">
+							<h4>Ankit Tiwari </h4>
+						</div>
+					</div>
+					<div class="wthree_team_grid2">
+						<ul class="social-icons">
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa  fa-github"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3  col-sm-12 col-xs-12 wthree_team_grid" data-aos="flip-left">
+					<div class="wthree_team_grid1">
+						<div class="hover14 column">
+							<div>
+								<figure><img src="images/antriksh.jpeg" alt=" " class="img-responsive" /></figure>
+							</div>
+						</div>
+						<div class="wthree_team_grid1_pos">
+							<h4> Antariksh Pratham </h4>
+						</div>
+					</div>
+					<div class="wthree_team_grid2">
+						<ul class="social-icons">
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa  fa-github"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			
+			</div>
+
+			<div class=" row w3layouts-grids">
+				<div class="col-md-3 wthree_team_grid" data-aos="flip-left">
+					<div class="wthree_team_grid1">
+						<div class="hover14 column">
+							<div>
+								<figure><img src="images/sanjana.png" alt=" " class="img-responsive" /></figure>
+							</div>
+						</div>
+						<div class="wthree_team_grid1_pos">
+							<h4>Birari Sanjana</h4>
+						</div>
+					</div>
+					<div class="wthree_team_grid2">
+						<ul class="social-icons">
+							<li>
+								<a href="https://instagram.com/sanj2601?igshid=1m40uah1firml"><i class="fa fa-instagram"></i>
+								</a>
+							</li>
+							<li><a href="https://github.com/SanjBirari2601"><i class="fa  fa-github"></i></a></li>
+							<li><a href="https://www.linkedin.com/in/sanjana-birari-8a29781a3"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3 wthree_team_grid" data-aos="flip-left">
+					<div class="wthree_team_grid1">
+						<div class="hover14 column">
+							<div>
+								<figure><img src="images/kruti.jpeg" alt=" " class="img-responsive" /></figure>
+							</div>
+						</div>
+						<div class="wthree_team_grid1_pos">
+							<h4>Kruti Patel</h4>
+						</div>
+					</div>
+					<div class="wthree_team_grid2">
+						<ul class="social-icons">
+							<li><a href="https://twitter.com/KrutiPa81689276?s=09"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="https://github.com/Nickruti"><i class="fa  fa-github"></i></a></li>
+							<li><a href="https://www.linkedin.com/in/kruti-patel-084642140"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3 wthree_team_grid" data-aos="flip-left">
+					<div class="wthree_team_grid1">
+						<div class="hover14 column">
+							<div>
+								<figure><img src="images/mahesh.jpeg" alt=" " class="img-responsive" /></figure>
+							</div>
+						</div>
+						<div class="wthree_team_grid1_pos">
+							<h4> Mahesh Ahire  </h4>
+						</div>
+					</div>
+					<div class="wthree_team_grid2">
+						<ul class="social-icons">
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="https://github.com/mahi14606"><i class="fa  fa-github"></i></a></li>
+							<li><a href="https://www.linkedin.com/in/mahesh-ahire-440a2614a/"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3 wthree_team_grid" data-aos="flip-left">
+					<div class="wthree_team_grid1">
+						<div class="hover14 column">
+							<div>
+								<figure><img src="images/aditya.jpeg" alt=" " class="img-responsive" /></figure>
+							</div>
+						</div>
+						<div class="wthree_team_grid1_pos">
+							<h4> Aditya Srivastava</h4>
+						</div>
+					</div>
+					<div class="wthree_team_grid2">
+						<ul class="social-icons">
+							<li><a href="https://twitter.com/adityas082512?s=09"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="https://github.com/adi10hero"><i class="fa  fa-github"></i></a></li>
+							<li><a href="https://www.linkedin.com /in/adi10hero"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			
+			</div>
+
+			<div class=" row w3layouts-grids">
+				<div class="col-md-3 wthree_team_grid" data-aos="flip-left">
+					<div class="wthree_team_grid1">
+						<div class="hover14 column">
+							<div>
+								<figure><img src="images/yadnesh.jpeg" alt=" " class="img-responsive" /></figure>
+							</div>
+						</div>
+						<div class="wthree_team_grid1_pos">
+							<h4>Yadnyesh Mulay</h4>
+						</div>
+					</div>
+					<div class="wthree_team_grid2">
+						<ul class="social-icons">
+							<li><a href="https://instagram.com/i_am_yadnyesh"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="https://github.com/Invi-97"><i class="fa  fa-github"></i></a></li>
+							<li><a href="https://www.linkedin.com/in/yadnyesh-mulay-81b53a18b"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- //team -->
+<!-- news -->
+<div class="news" id="news">
+	<div class="w3ls-heading">
+		<h3 style="color:#fff">Journey So far</h3>
+		<p class="sub" style="color:#fff">Small steps towards giving back to society </p>
+	</div>
+	<div>		
+		<div class="container" id="about">
+			<div class=" border border-warning col-md-6 col-sm-12" data-aos="zoom-in">
+				<div class="text-center timeline-div">
+					<!-- <img style="width: 100%" src="images/programs/iinnovate.jpeg"> -->
+					<span class="timeline-header">
+						<b>I-innovate Hackathon</b>
+					</span>
+					<p class="lead timeline-text">
+						To build a community base technical learning platfrom which is available, accessible and affordable to all.
+					</p>
+				</div>
+						
+			</div>
+
+			<div class="col-md-6 col-sm-12">
+				<div class="text-center timeline-div" data-aos="zoom-in">
+			      <span class="timeline-header"><b>Daily Tech Talks</b></span>
+			        	<p class="lead timeline-text">To build a healthy tech Community for students and 		professionals to share their Knowledge, Experience and Experties.
+			            </p>
+				</div>
+						
+			</div>
+		 </div>  
+
+		 <div class="container" id="about">
+			<div class=" border border-warning col-md-6 col-sm-12" data-aos="zoom-in">
+				<div class="text-center timeline-div">
+					      <span class="timeline-header"><b>Kya Karna</b></span>
+					            <p class="lead timeline-text">To build a community base technical learning platfrom which is available, accessible and affordable to all.</p>
+				</div>
+						
+			</div>
+
+			<div class="col-md-6 col-sm-12">
+				<div class="text-center timeline-div" data-aos="zoom-in">
+			      <span class="timeline-header"><b>Mahawiki Original series</b></span>
+			        	<p class="lead timeline-text">To build a healthy tech Community for students and 		professionals to share their Knowledge, Experience and Experties.
+			            </p>
+				</div>
+						
+			</div>
+		 </div>  
+
+		 <div class="container" id="about">
+			<div class=" border border-warning col-md-6 col-sm-12" data-aos="zoom-in">
+				<div class="text-center timeline-div">
+					      <span class="timeline-header"><b>Mahawiki and Skillship foundation</b></span>
+					       <p class="lead timeline-text">Hackon fest community partner</p>
+				</div>
+						
+			</div>
+
+			<div class="col-md-6 col-sm-12">
+				<div class="text-center timeline-div" data-aos="zoom-in">
+			      
+			      <span class="timeline-header"><b>MahaWiki 30 Day's Coding Challenge</b></span>
+			        	<p class="lead timeline-text">To build a healthy tech Community for students and 		professionals to share their Knowledge, Experience and Experties.
+			            </p>
+				</div>
+						
+			</div>
+		 </div>  
+		<!-- <img src="images/cm.jpg" style="width: 100%" class="img-responsive"> -->
+	</div>
+	
+</div>
+
+<!-- color back:background-image: linear-gradient(90deg, #ba1c92 0%, #6f0a81 80%); -->
+<!-- //news -->
+<!-- gallery -->
+	<!-- <div class="gallery" id="gallery">
+	 <div class="w3ls-heading">
+				<h3>Our Gallery</h3>
+				<p class="sub">Morbi in dui pretium, finibus sapien vel.</p>
+			</div>
+	 <div class="w3layouts-grids gal-wthree-agileits">
+			<div id="jzBox" class="jzBox">
+				<div id="jzBoxNextBig"></div>
+				<div id="jzBoxPrevBig"></div>
+				<img src="#" id="jzBoxTargetImg" alt=""/>
+				<div id="jzBoxBottom">
+					<div id="jzBoxTitle"></div>
+					<div id="jzBoxMoreItems">
+						<div id="jzBoxCounter"></div>
+						<i class="arrow-left" id="jzBoxPrev"></i>
+						<i class="arrow-right" id="jzBoxNext"></i>
+					</div>
+					<i class="close" id="jzBoxClose"></i>
+				</div>
+			</div>
+			<div class="gallery-grids-row">
+				<div class="col-md-3 gallery-grid">
+					<div class="wpf-demo-4">
+						<a href="images/g1.jpg" class="jzBoxLink item-hover" title="Education">
+							<img src="images/g1.jpg" alt=" " class="img-responsive" />
+							<div class="view-caption">
+								<p>Full View</p>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-3 gallery-grid">
+					<div class="wpf-demo-4">
+						<a href="images/g2.jpg" class="jzBoxLink item-hover" title="Education">
+							<img src="images/g2.jpg" alt=" " class="img-responsive" />
+							<div class="view-caption">
+								<p>Full View</p>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-3 gallery-grid">
+					<div class="wpf-demo-4">
+						<a href="images/g3.jpg" class="jzBoxLink item-hover" title="Education">
+							<img src="images/g3.jpg" alt=" " class="img-responsive" />
+							<div class="view-caption">
+								<p>Full View</p>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-3 gallery-grid">
+					<div class="wpf-demo-4">
+						<a href="images/g4.jpg" class="jzBoxLink item-hover" title="Education">
+							<img src="images/g4.jpg" alt=" " class="img-responsive" />
+							<div class="view-caption">
+								<p>Full View</p>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-3 gallery-grid">
+					<div class="wpf-demo-4">
+						<a href="images/g5.jpg" class="jzBoxLink item-hover" title="Education">
+							<img src="images/g5.jpg" alt=" " class="img-responsive" />
+							<div class="view-caption">
+								<p>Full View</p>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-3 gallery-grid">
+					<div class="wpf-demo-4">
+						<a href="images/g6.jpg" class="jzBoxLink item-hover" title="Education">
+							<img src="images/g6.jpg" alt=" " class="img-responsive" />
+							<div class="view-caption">
+								<p>Full View</p>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-3 gallery-grid">
+					<div class="wpf-demo-4">
+						<a href="images/g7.jpg" class="jzBoxLink item-hover" title="Education">
+							<img src="images/g7.jpg" alt=" " class="img-responsive" />
+							<div class="view-caption">
+								<p>Full View</p>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-3 gallery-grid">
+					<div class="wpf-demo-4">
+						<a href="images/g8.jpg" class="jzBoxLink item-hover" title="Education">
+							<img src="images/g8.jpg" alt=" " class="img-responsive" />
+							<div class="view-caption">
+								<p>Full View</p>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="clearfix"> </div>
+			</div>
+			</div>
+	</div> -->
+	<!-- //gallery -->
+<!-- contact -->
+	<!-- <div class="contact" id="contact">
+		<div class="container">
+			<div class="w3ls-heading">
+				<h3>Get In Touch</h3>
+				<p class="sub">Morbi in dui pretium, finibus sapien vel.</p>
+			</div>
+			<div class="w3layouts-grids">
+				<div class="col-md-4 contact-left">
+					<div class="contact-info">
+						<div class="contact-info-left">
+							<i class="fa fa-map-marker" aria-hidden="true"></i>
+						</div>
+						<div class="contact-info-right">
+							<h5>Address</h5>
+							<p>Eiusmod Tempor inc<br>
+								<span>1St Golden Place,</span>
+								Los Angeles 1256
+							</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="contact-info">
+						<div class="contact-info-left">
+							<i class="fa fa-phone-square" aria-hidden="true"></i>
+						</div>
+						<div class="contact-info-right">
+							<h5>Mobile</h5>
+							<ul>
+								<li>+1 234 567 8901</li>
+								<li>+1 345 678 9012</li>
+							</ul>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="contact-info">
+						<div class="contact-info-left">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</div>
+						<div class="contact-info-right">
+							<h5>E-Mail</h5>
+							<ul>
+								<li><a href="mailto:example@mail.com">mail@example.com</a></li>
+								<li><a href="mailto:example@mail.com">example@mail.com</a></li>
+							</ul>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="col-md-8 contact-form">
+					<form action="#" method="post">
+						<input type="text" name="Name" placeholder="Name" required="">
+						<input type="email" class="email" name="Email" placeholder="Email" required="">
+						<div class="clearfix"> </div>
+						<input type="text" class="phone" name="phone" placeholder="Phone Number" required="">
+						<textarea placeholder="Message" name="Message" required=""></textarea>
+						<input type="submit" value="SUBMIT">
+					</form>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div> -->
+	<!-- //contact -->
+
+
+<!-- Footer -->
+<div class="footer w3ls">
+	<div class="container">
+	<div class="newsletter-agile">
+		<form action="#" method="post">
+			<p>Send us Your Mail, we'll make sure You Never Miss a Thing!</p>
+			<input type="email" name="email" size="30" required="" placeholder="Enter your email here...">
+			<input type="submit" value="Subscribe">
+		</form>
+	</div>
+		<div class="footer-main">
+			<div class="footer-top">				
+				<div class="col-md-6 col-sm-12  ftr-grid fg2 mid-gd">
+					<h3>Our Address</h3>						
+					<div  class="ftr-address">
+						<div class="local">
+							<i style="color:#fff" class="fa fa-phone" aria-hidden="true"></i>
+						</div>
+						<div class="ftr-text">
+							<p style="color:#fff">+91 000 000 0000</p>
+						</div>
+						<div class="clearfix"> </div>
+
+						<div class="local">
+							<i style="color:#fff" class="fa fa-envelope" aria-hidden="true"></i>
+						</div>
+						<div class="ftr-text">
+							<p><a style="color:#fff" href="mailto:info@example.com">info@example.com</a></p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<!-- <div class="ftr-address">
+						<div class="local">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</div>
+						<div class="ftr-text">
+							<p><a href="mailto:info@example.com">info@example.com</a></p>
+						</div>
+						<div class="clearfix"> </div>
+					</div> -->
+				</div>
+				<div class="col-md-6 col-sm-12 ftr-grid fg2">
+					<h3>Keep In Touch With Us</h3>
+					<div class="right-w3l">
+						<ul class="top-links">
+							<!-- <li><a href="#"><i class="fa fa-facebook"></i></a></li> -->
+							<!-- <li><a href="https://twitter.com/mahawiki"><i class="fa fa-twitter"></i></a></li> -->
+							<li><a href="https://github.com/mahawiki"><i class="fa fa-github"></i></a></li>
+							<li><a href="https://www.instagram.com/mahawiki"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="https://www.linkedin.com/company/themahawiki/"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+					<!-- <div class="right-w3-2">
+						<ul class="text-w3">
+							<li><a href="#">Facebook</a></li>
+							<li><a href="#">Twitter</a></li>
+							<li><a href="#">Google</a></li>
+						</ul>
+					</div> -->
+				</div>
+			   <div class="clearfix"> </div>
+			</div>
+			<div class="copyrights">
+				<p> Total Number Of Visitors :- </p>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+<style type="text/css">
+
+blockquote{
+  font-size: 1.4em;
+  margin:10px auto;
+  font-family:Open Sans;
+  font-style:italic;
+  color: #fff;
+  /*! padding:0.2em 30px 0.2em 75px; */
+  border-left:8px solid #CE00AE;
+  line-height:1.4;
+  position: relative;
+  background: #4D3B4552;
+}
+
+blockquote::before{
+  font-family:Arial;
+  content: "\201C";
+  color:#fff;
+  font-size:2.5em;
+  position: absolute;
+  left: 6px;
+  top:-10px;
+}
+
+blockquote::after{
+  content: '';
+}
+
+blockquote span{
+  display:block;
+  color:#333333;
+  font-style: normal;
+  font-weight: bold;
+  margin-top:0.5em;
+}
+
+.vision-mission-text {
+	color: #ce00ae;
+    font-size: 1em;
+    text-shadow: 0.1px 0.1px black;
+}
+
+.vision-mission-header{
+color: #ce00ae;
+text-shadow: 0.1px 0.1px black;
+}
+
+.vision-mission-div{
+	box-shadow: 5px;
+	border-style: solid;
+    border-color: #ce00ae;
+    border-radius: 12px;
+}
+
+
+
+.box{
+    padding:60px 0px;
+}
+
+.box-part{
+    background:#FFF;
+    border-radius:0;
+    padding:60px 10px;
+    margin:30px 0px;
+}
+.text{
+    margin:20px 0px;
+}
+
+.fa{
+     color:#4183D7;
+}
+
+
+
+.timeline-div{
+	box-shadow: 5px;
+	border-style: solid;
+    border-color: #fff;
+    border-radius: 12px;
+	margin: 25px 0px;
+}
+
+
+.timeline-text {
+	color: #fff;
+    font-size: 1em;
+    text-shadow: 0.1px 0.1px white;
+    margin: 20px;
+}
+
+.timeline-header{
+color: #fff;
+text-shadow: 0.1px 0.1px white;
+line-height: 3.5;
+font-size: 2rem;
+}
+
+
+</style>
+<!-- Footer -->
+
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/aos.js"></script>
+<!--pop-up-box -->
+					<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+					<script>
+					$(document).ready(function() {
+					$('.popup-with-zoom-anim').magnificPopup({
+					type: 'inline',
+					fixedContentPos: false,
+					fixedBgPos: true,
+					overflowY: 'auto',
+					closeBtnInside: true,
+					preloader: false,
+					midClick: true,
+					removalDelay: 300,
+					mainClass: 'my-mfp-zoom-in'
+					});
+
+					});
+					</script>
+<!-- //pop-up-box -->
+
+<!-- //js -->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript">
+
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+
+			<script src="js/jzBox.js"></script>
+
+			<!-- Countdown-Timer-JavaScript -->
+			<script src="js/simplyCountdown.js"></script>
+			<script>
+				var d = new Date(new Date().getTime() + 948 * 120 * 120 * 2000);
+
+				// default example
+				simplyCountdown('.simply-countdown-one', {
+					year: d.getFullYear(),
+					month: d.getMonth() + 1,
+					day: d.getDate()
+				});
+
+				// inline example
+				simplyCountdown('.simply-countdown-inline', {
+					year: d.getFullYear(),
+					month: d.getMonth() + 1,
+					day: d.getDate(),
+					inline: true
+				});
+
+				//jQuery example
+				$('#simply-countdown-losange').simplyCountdown({
+					year: d.getFullYear(),
+					month: d.getMonth() + 1,
+					day: d.getDate(),
+					enableUtc: false
+				});
+			</script>
+		<!-- //Countdown-Timer-JavaScript -->
+
+<!-- smooth scrolling -->
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+		/*
+			var defaults = {
+			containerID: 'toTop', // fading element id
+			containerHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear'
+			};
+		*/
+		$().UItoTop({ easingType: 'easeOutQuart' });
+		});
+	</script>
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!-- //smooth scrolling -->
+<script type="text/javascript">
+   AOS.init();						
+</script>
+<script type="text/javascript">
+	var swiper = new Swiper('.blog-slider', {
+      spaceBetween: 30,
+      effect: 'fade',
+      loop: true,
+      mousewheel: {
+        invert: false,
+      },
+      // autoHeight: true,
+      pagination: {
+        el: '.blog-slider__pagination',
+        clickable: true,
+      }
+    });
+</script>
+</body>
+</html>
